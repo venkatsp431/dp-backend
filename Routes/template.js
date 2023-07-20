@@ -119,7 +119,8 @@ router.get(`/templateid/:id`, async (req, res) => {
 router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
-    const browser = await puppeteer.launch();
+    console.log(template);
+    const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
     await page.goto(
       `https://effulgent-starburst-c05a93.netlify.app/${template}`,
@@ -180,7 +181,7 @@ router.get("/download-pdf", async (req, res) => {
 
     await browser.close();
 
-    const pdfPath = path.join("temp", "resume.pdf");
+    const pdfPath = path.join("temp", "webpage.pdf");
 
     fs.writeFile(pdfPath, pdfBuffer, (error) => {
       if (error) {
