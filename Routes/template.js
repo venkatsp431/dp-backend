@@ -97,7 +97,7 @@ router.get(`/uploader/:id`, async (req, res) => {
     const { id } = req.params;
     const templatedata = await Upload.findOne({ personid: id });
     console.log(templatedata);
-    const fileUrl = `http://localhost:7070/uploads/${templatedata.file.filename}`;
+    const fileUrl = `https://dynamic-portfolio2.onrender.com/uploads/${templatedata.file.filename}`;
     console.log(fileUrl);
     if (!templatedata) res.status(400).json({ message: "Not found" });
     res.status(200).json({ fileUrl });
@@ -121,9 +121,12 @@ router.get("/download-pdf", async (req, res) => {
     const { template } = req.query;
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto(`http://localhost:3000/${template}`, {
-      waitUntil: "networkidle2",
-    });
+    await page.goto(
+      `https://effulgent-starburst-c05a93.netlify.app/${template}`,
+      {
+        waitUntil: "networkidle2",
+      }
+    );
     await page.evaluate(() => {
       if (document.querySelector(".collapse")) {
         const collapses = document.querySelectorAll(".collapse");
