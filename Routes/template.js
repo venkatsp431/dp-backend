@@ -135,8 +135,8 @@ router.get("/download-pdf", async (req, res) => {
         }
       }
       if (document.querySelector(".template-2")) {
-        document.querySelector(".php-email-form")?.classList.add("hidden");
-        document.querySelector("header")?.classList.add("hidden");
+        document.querySelector(".php-email-form").classList.add("hidden");
+        document.querySelector("header").classList.add("hidden");
         document.querySelector(".hero").classList.add("hero-edit");
         document.querySelector(".downloader").classList.add("hidden");
         const sections = document.querySelectorAll("section");

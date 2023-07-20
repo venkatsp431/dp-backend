@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "npm install && npm run compile && npm run bundle"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "author": "",
   "license": "ISC",
