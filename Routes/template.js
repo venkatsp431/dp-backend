@@ -116,18 +116,15 @@ router.get(`/templateid/:id`, async (req, res) => {
     console.log(error);
   }
 });
-router.get("/download-pdf", async (req, res) => {
+router.post("/download-pdf", async (req, res) => {
   try {
-    const { template } = req.query;
-    console.log(template);
+    const { url } = req.body;
+    // console.log(template);
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
-    await page.goto(
-      `https://effulgent-starburst-c05a93.netlify.app/template2/1689886802798`,
-      {
-        waitUntil: "networkidle2",
-      }
-    );
+    await page.goto(url, {
+      waitUntil: "networkidle2",
+    });
     await page.evaluate(() => {
       if (document.querySelector(".collapse")) {
         const collapses = document.querySelectorAll(".collapse");
