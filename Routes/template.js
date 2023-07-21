@@ -116,7 +116,7 @@ router.get(`/templateid/:id`, async (req, res) => {
     console.log(error);
   }
 });
-router.post("/download-pdf", async (req, res) => {
+router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
     // console.log(template);
