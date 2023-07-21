@@ -123,7 +123,7 @@ router.get("/download-pdf", async (req, res) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(
-      `https://master--effulgent-starburst-c05a93.netlify.app/${template}`,
+      `https://effulgent-starburst-c05a93.netlify.app/${template}`,
       {
         waitUntil: "networkidle2",
       }
