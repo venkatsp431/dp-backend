@@ -120,7 +120,7 @@ router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
     // console.log(template);
-    const browser = await puppeteer.launch({ headless: "new" });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto(
       `https://master--effulgent-starburst-c05a93.netlify.app/${template}`,
@@ -131,18 +131,18 @@ router.get("/download-pdf", async (req, res) => {
     await page.evaluate(() => {
       if (document.querySelector(".collapse")) {
         const collapses = document.querySelectorAll(".collapse");
-        document.querySelector(".form-contact").classList.add("hidden");
-        document.querySelector("#main-footer").classList.add("hidden");
+        document.querySelector(".form-contact")?.classList.add("hidden");
+        document.querySelector("#main-footer")?.classList.add("hidden");
         for (let i = 0; i < collapses.length; i++) {
           collapses[i].classList.add("show");
           collapses[i].classList.add("mar-height");
         }
       }
       if (document.querySelector(".template-2")) {
-        document.querySelector(".php-email-form").classList.add("hidden");
-        document.querySelector("header").classList.add("hidden");
-        document.querySelector(".hero").classList.add("hero-edit");
-        document.querySelector(".downloader").classList.add("hidden");
+        document.querySelector(".php-email-form")?.classList.add("hidden");
+        document.querySelector("header")?.classList.add("hidden");
+        document.querySelector(".hero")?.classList.add("hero-edit");
+        document.querySelector(".downloader")?.classList.add("hidden");
         const sections = document.querySelectorAll("section");
         sections.forEach((section, index) => {
           // Create a new page for each section
