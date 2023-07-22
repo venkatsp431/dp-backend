@@ -114,6 +114,7 @@ router.get(`/templateid/:id`, async (req, res) => {
     res.status(200).json({ data: templatedata });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ data: "Ïnternal Server Error" });
   }
 });
 router.get("/download-pdf", async (req, res) => {
