@@ -119,8 +119,8 @@ router.get(`/templateid/:id`, async (req, res) => {
 router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
-    // console.log(template);
-    const browser = await puppeteer.launch();
+    console.log(template);
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto(
       `https://effulgent-starburst-c05a93.netlify.app/${template}`,
