@@ -206,6 +206,7 @@ router.get("/download-pdf", async (req, res) => {
     });
   } catch (error) {
     console.error("Error generating PDF:", error);
+    console.log(error);
     res.status(500).send("Error generating PDF");
   }
 });
