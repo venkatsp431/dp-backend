@@ -6,7 +6,7 @@ const isAuthenticated = async (req, res, next) => {
   if (req.headers) {
     try {
       token = await req.headers["x-auth-token"];
-      const decode = jwt.verify(token, process.env.SECRETKEY);
+      const decode = jwt.verify(token, "heythereiamsecretcode");
       console.log(decode);
       req.user = await User.findById(decode.id).select("_id name email");
       next();
