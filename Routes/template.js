@@ -122,9 +122,9 @@ router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
     console.log(template);
-    const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
+    // const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
     const browser = await puppeteer.launch({
-      executablePath: chromepath,
+      executablePath: `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`,
     });
     const page = await browser.newPage();
     await page.goto(
