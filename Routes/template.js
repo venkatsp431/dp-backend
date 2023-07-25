@@ -3,7 +3,7 @@ import { Template } from "../Models/template.js";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
-// import puppeteer from "puppeteer";
+
 import puppeteer from "puppeteer";
 import fs from "fs";
 import nodemailer from "nodemailer";
@@ -11,7 +11,6 @@ import { Upload } from "../Models/upload.js";
 
 const router = express.Router();
 
-// const upload = multer({ storage });
 const storage = multer.diskStorage({
   destination: "uploads",
   filename: (req, file, cb) => {
