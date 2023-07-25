@@ -4,7 +4,7 @@ import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 // import puppeteer from "puppeteer";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 import fs from "fs";
 import nodemailer from "nodemailer";
 import { Upload } from "../Models/upload.js";
