@@ -117,20 +117,24 @@ router.get(`/templateid/:id`, async (req, res) => {
     res.status(500).json({ data: "Ïnternal Server Error" });
   }
 });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 router.get("/download-pdf", async (req, res) => {
   try {
     const { template } = req.query;
     console.log(template);
-    const currentFilePath = fileURLToPath(import.meta.url);
+    // const currentFilePath = fileURLToPath(import.meta.url);
+    const cachePath = path.join(__dirname, "cache");
     const chromePath = path.join(
-      path.dirname(currentFilePath),
+      __dirname,
       `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
     );
     // const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
     // const cachePath = path.join(__dirname, "puppeteer-cache");
     const browser = await puppeteer.launch({
       executablePath: chromePath,
-      args: [`--user-data-dir=${cachePath}`],
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      userDataDir: cachePath,
     });
     const page = await browser.newPage();
     await page.goto(
