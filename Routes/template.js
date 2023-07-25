@@ -159,15 +159,15 @@ router.get("/download-pdf", async (req, res) => {
     });
     await page.addStyleTag({
       content: `
-        @media print {
-          body {
-            width: auto;
-            height: auto;
-            margin: 20px;
-            padding: 20px;
+          @media print {
+            body {
+              width: auto;
+              height: auto;
+              margin: 20px;
+              padding: 20px;
+            }
           }
-        }
-      `,
+        `,
     });
     const pdfBuffer = await page.pdf({
       format: "A4",
