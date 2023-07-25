@@ -122,7 +122,10 @@ router.get("/download-pdf", async (req, res) => {
     const { template } = req.query;
     console.log(template);
     // const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
-    const browser = await puppeteer.launch();
+    const cachePath = path.join(__dirname, "puppeteer-cache");
+    const browser = await puppeteer.launch({
+      args: [`--user-data-dir=${cachePath}`],
+    });
     const page = await browser.newPage();
     await page.goto(
       `https://effulgent-starburst-c05a93.netlify.app/${template}`,
