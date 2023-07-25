@@ -127,7 +127,7 @@ router.get("/download-pdf", async (req, res) => {
     const cachePath = path.join(__dirname, "cache");
     const chromePath = path.join(
       __dirname,
-      `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
+      `C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe`
     );
     // const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
     // const cachePath = path.join(__dirname, "puppeteer-cache");
