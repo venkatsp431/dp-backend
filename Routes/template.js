@@ -3,7 +3,7 @@ import { Template } from "../Models/template.js";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
-const { fileURLToPath } = require("url");
+import { fileURLToPath } from "url";
 import puppeteer from "puppeteer";
 import fs from "fs";
 import nodemailer from "nodemailer";
