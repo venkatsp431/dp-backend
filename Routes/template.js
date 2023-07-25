@@ -3,7 +3,8 @@ import { Template } from "../Models/template.js";
 import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
-import puppeteer from "puppeteer";
+// import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import fs from "fs";
 import nodemailer from "nodemailer";
 import { Upload } from "../Models/upload.js";
@@ -124,7 +125,6 @@ router.get("/download-pdf", async (req, res) => {
     const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
     const browser = await puppeteer.launch({
       executablePath: chromepath,
-      headless: true,
     });
     const page = await browser.newPage();
     await page.goto(
