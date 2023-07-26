@@ -4,10 +4,11 @@ import multer from "multer";
 import { v4 as uuidv4 } from "uuid";
 import path from "path";
 import { fileURLToPath } from "url";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import fs from "fs";
 import nodemailer from "nodemailer";
 import { Upload } from "../Models/upload.js";
+import puppeteerConfig from "../.puppeteerrc.cjs";
 
 const router = express.Router();
 
@@ -124,18 +125,14 @@ router.get("/download-pdf", async (req, res) => {
     const { template } = req.query;
     console.log(template);
     // const currentFilePath = fileURLToPath(import.meta.url);
-    const cachePath = path.join(__dirname, "cache");
-    const chromePath = path.join(
-      __dirname,
-      `C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe`
-    );
+    // const cachePath = path.join(__dirname, "cache");
+    // const chromePath = path.join(
+    //   __dirname,
+    //   `C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe`
+    // );
     // const chromepath = `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`;
     // const cachePath = path.join(__dirname, "puppeteer-cache");
-    const browser = await puppeteer.launch({
-      executablePath: chromePath,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-      userDataDir: cachePath,
-    });
+    const browser = await puppeteer.launch(puppeteerConfig.launch);
     const page = await browser.newPage();
     await page.goto(
       `https://effulgent-starburst-c05a93.netlify.app/${template}`,
